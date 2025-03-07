@@ -1,0 +1,64 @@
+⚙️ CONFIGURACIÓN DEL SISTEMA Y OPCIONES GENERALES.
+
+- sysdm.cpl → Propiedades del Sistema
+- ms-settings:about → Acerca del Sistema
+- ms-settings:display → Configuración de Pantalla
+- ms-settings:defaultapps → Aplicaciones Predeterminadas
+- ms-settings:optionalfeatures → Características Opcionales de Windows
+- optionalfeatures → Activar o Desactivar Características de Windows
+- control folders → Opciones del Explorador de Archivos
+- msconfig → Configuración del Sistema
+
+🖥️ ADMINISTRACIÓN DEL SISTEMA Y HARDWARE.
+
+- devmgmt.msc → Administrador de Dispositivos
+- diskmgmt.msc → Administrador de Discos
+- dfrgui → Desfragmentador de Disco
+- regedit → Editor del Registro de Windows
+
+🔌 RED Y CONECTIVIDAD.
+
+- ncpa.cpl → Conexiones de Red
+- control /name Microsoft.NetworkAndSharingCenter → Centro de Redes y Recursos Compartidos
+- wf.msc → Firewall de Windows
+
+🔋 ENERGÍA Y RENDIMIENTO.
+
+- control powercfg.cpl → Opciones de Energía
+- cleanmgr → Liberador de Espacio en Disco
+
+🔍 SEGURIDAD Y DIAGNÓSTICO.
+
+- winver → Información de la Versión de Windows
+- dxdiag → Configuración de DirectX
+- ms-settings:windowsdefender → Configuración de Windows Defender
+
+🖥️ HERRAMIENTAS DEL SISTEMA.
+
+- taskmgr → Administrador de Tareas
+- snippingtool → Herramienta de Recortes
+- ms-screenclip: → Captura de Pantalla Rápida
+- osk → Teclado en Pantalla
+- magnify → Lupa
+- calc → Calculadora
+- appwiz.cpl → Agregar o Quitar Programas
+- control printers → Dispositivos e Impresoras
+
+🆕 COMANDOS ADICIONALES ÚTILES.
+
+- cmd → Abre la Consola de Comandos (Símbolo del sistema)
+- powershell → Abre PowerShell
+- wt → Abre la Aplicación Terminal (Windows 10 & Windows 11)
+- gpedit.msc → Editor de Directivas de Grupo (Windows Pro y Enterprise)
+- secpol.msc → Configuración de Políticas de Seguridad Local
+- services.msc → Administrador de Servicios de Windows
+- eventvwr → Visor de Eventos
+- perfmon → Monitor de Rendimiento
+- mstsc → Conexión a Escritorio Remoto
+- notepad → Abre el Bloc de Notas
+- explorer → Abre el Explorador de Archivos
+- control → Accede al Panel de Control Clásico
+- shutdown /s /t 0 → Apagar Windows de inmediato
+- shutdown /r /t 0 → Reiniciar Windows de inmediato
+
+NOTA: Presionar Ctrl + Shift + Enter para Ejecutar como Administrador.

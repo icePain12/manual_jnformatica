@@ -1,0 +1,175 @@
+################################################################################
+#                           POWERSHELL COMMANDS                                #
+################################################################################
+
+####################### Manipulación de Archivos y Directorios #################
+
+# Creación de archivos y carpetas (equivalente a 'touch' o 'mkdir' en Unix/Linux)
+# Sintaxis:
+#   New-Item -Path <ruta> -Name "nombre_del_elemento" -Type <File|Container>
+# Donde: 
+#   • <ruta> es el directorio donde se creará el elemento (usa "." para el directorio actual).
+#   • "nombre_del_elemento" es el nombre del archivo o carpeta (con extensión, en su caso).
+#   • <File> crea un archivo, <Container> crea una carpeta.
+#
+# Ejemplos:
+New-Item -Path . -Name "main.py" -Type File         # Crea el archivo "main.py" en el directorio actual.
+New-Item -Path . -Name "curso_python" -Type Container  # Crea una carpeta denominada "curso_python" en el directorio actual.
+
+# Eliminación de archivos o carpetas (equivalente a 'rm' en Unix/Linux)
+# Sintaxis:
+#   Remove-Item -Path <ruta_del_elemento> [-Recurse] [-Force]
+# Donde:
+#   • <ruta_del_elemento> es la ruta completa del archivo o carpeta a eliminar.
+#   • -Recurse elimina directorios y su contenido recursivamente.
+#   • -Force elimina forzadamente, incluso si existen restricciones o atributos de solo lectura.
+#
+# Ejemplos:
+Remove-Item -Path "C:\Users\usuarioActual\documentos\contraseñas.txt" -Force  # Elimina el archivo "contraseñas.txt" en la carpeta "documentos".
+Remove-Item -Path "C:\Users\usuarioActual\documentos\tareas" -Force             # Elimina la carpeta "tareas" en la carpeta "documentos".
+
+# Visualización del contenido de un archivo (similar a 'cat' en Unix/Linux)
+# Sintaxis:
+#   Get-Content -Path <ruta_del_archivo>
+#
+# Ejemplo:
+Get-Content -Path ".\$`PROFILE.txt"   # Imprime el contenido del archivo literal "$PROFILE.txt" ubicado en el directorio actual.
+
+# Cambio del directorio de trabajo
+# Sintaxis:
+#   Set-Location -Path "ruta\al\directorio"
+#
+# Ejemplo:
+Set-Location -Path "C:\Users\usuarioActual"   # Cambia al directorio "usuarioActual".
+
+# Visualización del contenido de un directorio (similar a 'ls' en Unix/Linux)
+# Sintaxis:
+#   Get-ChildItem [-Recurse] -Path <ruta>
+#
+# Ejemplos:
+Get-ChildItem -Recurse                         # Muestra el contenido del directorio actual de forma recursiva.
+Get-ChildItem -Path "C:\Users\usuarioActual\documentos"  # Muestra el contenido de la carpeta "documentos".
+
+# Renombrar archivos o directorios 
+# Sintaxis:
+#   Rename-Item -Path <ruta_actual> -NewName <nuevo_nombre>
+#
+# Ejemplos:
+Rename-Item -Path "C:\Ruta\a\tuarchivo\archivo.extension" -NewName "nuevoNombre.extension"
+Rename-Item -Path "a.exe" -NewName "fibonacci.exe"   # Renombra "a.exe" a "fibonacci.exe".
+
+# Copiar archivos o directorios
+# Sintaxis:
+#   Copy-Item -Path <ruta_origen> -Destination <ruta_destino> [-Recurse] [-Force]
+#
+# Ejemplos:
+Copy-Item -Path "C:\Origen\archivo.txt" -Destination "D:\Destino\archivo.txt"    # Copia "archivo.txt" a la ubicación destino especificada.
+Copy-Item -Path "C:\Origen\*.txt" -Destination "D:\Destino"                       # Copia todos los archivos con extensión .txt del directorio "Origen" a "Destino".
+Copy-Item -Path "C:\Origen\Carpeta" -Destination "D:\Destino\Carpeta" -Recurse      # Copia una carpeta y todo su contenido.
+Copy-Item -Path "C:\Origen\archivo.txt" -Destination "D:\Destino\archivo.txt" -Force  # Copia forzadamente útil para sobrescribir archivos existentes.
+
+# Mover archivos o directorios (también permite renombrarlos en el proceso)
+# Sintaxis:
+#   Move-Item -Path <ruta_origen> -Destination <ruta_destino> [-Force] [-WhatIf]
+#
+# Ejemplos:
+Move-Item -Path "C:\Origen\archivo.txt" -Destination "D:\Destino\"           # Mueve el archivo "archivo.txt" al directorio "Destino".
+Move-Item -Path "C:\Origen\archivo.txt" -Destination "D:\Destino\nuevoNombre.txt"  # Mueve y renombra el archivo.
+Move-Item -Path "C:\Origen\Carpeta" -Destination "D:\Destino\Carpeta"          # Mueve la carpeta "Carpeta".
+Move-Item -Path "C:\Origen\archivo.txt" -Destination "D:\Destino\archivo.txt" -Force    # Fuerza la operación de mover (sobrescribe si es necesario).
+Move-Item -Path "C:\Origen\archivo.txt" -Destination "D:\Destino\archivo.txt" -WhatIf   # Simula la operación sin efectuar ningún cambio real.
+
+# Abrir el Explorador de Windows en el directorio actual
+explorer .
+
+# Abrir Visual Studio Code en el directorio actual (si está instalado)
+code .
+
+# Ejecutar un script al lanzar la terminal (utilizando Windows Terminal)
+# Ejemplos:
+#   • Con Command Prompt:
+wt cmd -NoExit -Command "python ruta\de\tu\script\HelloWorld.py"
+#   • Con PowerShell clásico:
+wt powershell -NoExit -Command "python ruta\de\tu\script\HelloWorld.py"
+#   • Con PowerShell 7 (pwsh):
+wt pwsh -NoExit -Command "python ruta\de\tu\script\HelloWorld.py"
+
+######################### Registro de Windows ###############################
+
+# 1. CREAR UNA NUEVA CLAVE Y ASIGNAR UN VALOR
+# ------------------------------------------------
+# Crea la clave "MiAplicación" en HKCU:\Software y asigna un valor denominado "NombreValor" con el contenido "MiValor".
+New-Item -Path "HKCU:\Software\MiAplicación"      
+Set-ItemProperty -Path "HKCU:\Software\MiAplicación" -Name "NombreValor" -Value "MiValor"  
+
+# 2. COMPROBAR LA EXISTENCIA DE UNA CLAVE
+# ------------------------------------------------
+# Verifica si la clave "MiAplicación" existe en el Registro.
+Test-Path -Path "HKCU:\Software\MiAplicación"       
+
+# 3. OBTENER INFORMACIÓN DE UNA CLAVE
+# ------------------------------------------------
+# Muestra los detalles de la clave "MiAplicación".
+Get-Item -Path "HKCU:\Software\MiAplicación"          
+
+# 4. LEER LAS PROPIEDADES (VALORES) DE UNA CLAVE
+# ------------------------------------------------
+# Muestra todas las propiedades (valores) configuradas en la clave "MiAplicación".
+Get-ItemProperty -Path "HKCU:\Software\MiAplicación"  
+
+# 5. MODIFICAR UN VALOR EXISTENTE
+# ------------------------------------------------
+# Actualiza el valor de "NombreValor" a "NuevoValor" dentro de la clave.
+Set-ItemProperty -Path "HKCU:\Software\MiAplicación" -Name "NombreValor" -Value "NuevoValor"  
+
+# 6. ELIMINAR UNA PROPIEDAD (VALOR) DE UNA CLAVE
+# ------------------------------------------------
+# Elimina la propiedad "NombreValor" de la clave "MiAplicación" sin borrar la clave completa.
+Remove-ItemProperty -Path "HKCU:\Software\MiAplicación" -Name "NombreValor"  
+
+# 7. RENOMBRAR UNA CLAVE DEL REGISTRO
+# ------------------------------------------------
+# Cambia el nombre de la clave de "MiAplicación" a "NuevaAplicacion".
+Rename-Item -Path "HKCU:\Software\MiAplicación" -NewName "NuevaAplicacion"  
+
+# 8. COPIAR UNA CLAVE COMPLETA (CON SUS SUBCLAVES Y VALORES)
+# ------------------------------------------------
+# Realiza una copia de la clave "NuevaAplicacion" (la clave previamente renombrada) 
+# y la almacena en "MiAplicacion_Bkp" como respaldo o duplicado.
+Copy-Item -Path "HKCU:\Software\NuevaAplicacion" -Destination "HKCU:\Software\MiAplicacion_Bkp" -Recurse  
+
+# 9. ELIMINAR UNA CLAVE COMPLETA (RECURSIVO)
+# ------------------------------------------------
+# Elimina la clave "MiAplicacion_Bkp" y todo su contenido, utilizando -Force para forzar la eliminación si es necesario.
+Remove-Item -Path "HKCU:\Software\MiAplicacion_Bkp" -Recurse -Force  
+
+########################## Comandos de Red ####################################
+
+# Visualizar la configuración de red (similar a 'ifconfig' en Unix/Linux o 'ipconfig' en CMD)
+Get-NetIPAddress                           # Muestra las direcciones IP configuradas.
+Get-NetIPAddress -InterfaceAlias "Ethernet"  # Filtra la visualización por la interfaz "Ethernet".
+Get-NetIPAddress -AddressFamily IPv4         # Muestra únicamente direcciones IPv4.
+
+# Resumen de la configuración de red
+Get-NetIPConfiguration                       # Muestra la configuración de red actual.
+Get-NetIPConfiguration -Detailed             # Proporciona información detallada.
+Get-NetIPConfiguration -InterfaceAlias "Ethernet"  # Muestra la configuración de la interfaz "Ethernet" (puede combinarse con -Detailed).
+
+# Verificar la conectividad con otro equipo (similar al comando 'ping')
+Test-Connection -ComputerName "google.com"   # Envía solicitudes ICMP a "google.com".
+
+# Realizar un ping especificando el número de paquetes a enviar (por ejemplo, 5)
+Test-Connection -ComputerName "192.168.1.1" -Count 5
+
+# Ejecución de un ping continuo (similar a 'ping -t')
+while ($true) {
+    Test-Connection -ComputerName "192.168.1.1" -Count 1
+    Start-Sleep -Seconds 1
+}
+
+# Trazar la ruta que siguen los paquetes hasta un host (equivalente a 'tracert')
+Test-NetConnection -ComputerName "google.com" -TraceRoute
+
+################################################################################
+#                                FIN DEL ARCHIVO                               #
+################################################################################

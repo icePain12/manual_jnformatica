@@ -1,0 +1,32 @@
+/*
+PsTools es un conjunto de utilidades de línea de comandos desarrollado por Sysinternals (ahora parte de Microsoft) que permite administrar y solucionar problemas tanto en sistemas Windows locales como remotos. Estas herramientas son ligeras, no requieren instalación y son increíblemente versátiles para administradores de sistemas y usuarios avanzados. Aquí tienes un resumen rápido de las herramientas clave de la suite:
+
+PsExec: Ejecuta procesos en sistemas remotos, incluidos comandos interactivos.
+
+PsFile: Muestra archivos abiertos de manera remota.
+
+PsGetSid: Muestra el Identificador de Seguridad (SID) de una computadora o usuario.
+
+PsInfo: Recupera información detallada del sistema.
+
+PsKill: Termina procesos por nombre o ID de proceso.
+
+PsList: Lista información detallada sobre los procesos.
+
+PsLoggedOn: Muestra quién está conectado localmente o a través de recursos compartidos.
+
+PsLogList: Exporta registros de eventos.
+
+PsPasswd: Cambiar las contraseñas de cuentas.
+
+PsService: Ver y controlar servicios.
+
+PsShutdown: Apagar o reiniciar una computadora.
+
+PsSuspend: Suspender procesos.
+
+PsUptime: Mostrar cuánto tiempo ha estado funcionando un sistema desde su último reinicio.
+
+Estas herramientas son especialmente útiles para gestionar sistemas remotos sin necesidad de instalar software adicional en las máquinas objetivo. Puedes encontrar más detalles y descargar el conjunto en la página oficial de Microsoft. ¡Avísame si necesitas ayuda con alguna herramienta en particular!
+
+*/

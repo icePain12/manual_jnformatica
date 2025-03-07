@@ -1,0 +1,71 @@
+################################################################################
+#                        COMANDOS ÚTILES - INFORMÁTICA                         #
+################################################################################
+
+# 1. RegJump: Abrir el Editor del Registro en ubicaciones específicas
+# ------------------------------------------------------------------------------
+# RegJump es una utilidad que permite abrir el Editor del Registro (regedit) en una
+# ruta determinada sin tener que navegar manualmente por la estructura de claves.
+#
+# Para utilizarlo, descarga e instala RegJump. Luego, puedes invocar regedit en la ruta
+# deseada de forma directa.
+#
+# Ejemplo de uso:
+#   regjump HKCR\Directory\background\shell\
+#
+# NOTA:
+#   Cualquier archivo ubicado en "C:\Windows\System32" se puede ejecutar directamente
+#   desde la Terminal de Windows o el cuadro de diálogo "Ejecutar". Esto significa que,
+#   por ejemplo:
+#     • Si creas un archivo "ls.bat" cuyo contenido sea "dir", podrás ejecutarlo simplemente
+#       escribiendo "ls" en el Command Prompt, PowerShell u otra terminal.
+#     • Si creas un archivo llamado "brave" que invoque "tu/ruta/brave.exe", podrás iniciar
+#       el navegador Brave desde cmd, PowerShell, Windows Terminal o mediante "Ejecutar".
+
+# 2. Menú contextual de Windows (clic derecho)
+# ------------------------------------------------------------------------------
+# La clave de registro:
+#   HKCR\Directory\background\shell   (equivalente a)   Computer\HKEY_CLASSES_ROOT\Directory\background\shell\
+#
+# Contiene la información utilizada para construir el menú contextual del Explorador de Windows.
+# Puedes añadir comandos o programas personalizados a este menú para acceder rápidamente a ellos.
+#
+# Ejemplo de uso para abrir esta ubicación con RegJump:
+#   regjump HKCR\Directory\background\shell\
+
+# 3. Serva Community y el arranque PXE
+# ------------------------------------------------------------------------------
+# Serva Community puede ser utilizado para instalar un servidor PXE que permita ejecutar
+# el instalador de Windows a través de la red. No obstante, en algunos casos puede mostrarse
+# un menú solicitando usuario y contraseña.
+#
+# Recomendación:
+#   Investigar las opciones de configuración de Serva Community o buscar alternativas que
+#   permitan suprimir o gestionar la autenticación requerida, dependiendo del entorno y
+#   requerimientos específicos.
+
+# 4. Creación y activación de un entorno virtual en Python
+# ------------------------------------------------------------------------------
+# Los entornos virtuales en Python permiten aislar las dependencias de cada proyecto,
+# evitando conflictos con la instalación global.
+#
+# Para crear un entorno virtual:
+#   python -m venv venv
+#
+# Esto creará una carpeta llamada "venv" en la ubicación actual. Para activar el entorno:
+#   .\venv\Scripts\activate
+#
+# Al activarlo, el prompt mostrará un prefijo indicando que estás trabajando dentro del entorno
+# virtual. Es una práctica recomendada para cada proyecto de Python, ya que facilita la gestión
+# de dependencias y fomenta un entorno de desarrollo reproducible.
+#
+# NOTA ADICIONAL:
+#   Tras instalar las dependencias necesarias para tu proyecto, es aconsejable exportarlas a
+#   un archivo "requirements.txt" mediante:
+#       pip freeze > requirements.txt
+#   para que otros desarrolladores puedan instalar exactamente las mismas versiones con:
+#       pip install -r requirements.txt
+
+################################################################################
+#                                FIN DEL ARCHIVO                               #
+################################################################################
